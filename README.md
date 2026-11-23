@@ -1,6 +1,6 @@
 # fmt
 
-<img src="app.webp" width="128" alt="fmt icon">
+<img src="app.webp" width="256" alt="fmt icon">
 
 **fmt** is a small macOS menu bar app that adds useful actions to the Finder
 context menu: create a file, copy a path, name or extension, and open a folder in
@@ -87,27 +87,6 @@ macOS does not show third-party Finder Sync extension menus in File Provider
 folders (iCloud Drive, OneDrive, Dropbox, etc.). Local folders and the Desktop
 work fine.
 
-## Release
+## License
 
-The repository is not connected to a remote yet, so `git push` and a GitHub
-Release become available after adding one:
-
-```bash
-git remote add origin <repository URL>
-git push -u origin main
-git tag v1.0.0
-git push origin v1.0.0
-gh release create v1.0.0 fmt.zip --title "fmt 1.0.0" --generate-notes
-```
-
-A GitHub Release alone is not enough for public distribution. Sign the build with
-a **Developer ID Application** certificate, enable the hardened runtime, notarize
-it with `xcrun notarytool`, staple the ticket, and attach the archive to the
-release. Without signing and notarization, Gatekeeper blocks the app (it can only
-be opened via right-click → Open or by removing `com.apple.quarantine`). This app
-cannot go to the Mac App Store because the extension needs broad file system
-access, so a GitHub Release is the practical way to distribute it.
-
-Before releasing, replace the placeholder bundle ID (`devplaceholder.*`) with
-your own reverse-domain identifier and consider lowering
-`MACOSX_DEPLOYMENT_TARGET`.
+MIT — see [LICENSE](LICENSE).
