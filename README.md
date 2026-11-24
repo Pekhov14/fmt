@@ -63,6 +63,23 @@ the Dock, and choose **Relaunch**.
 You can also just build the app in Xcode (scheme `fmt`, destination `macOS`) and
 run it: the icon appears in the menu bar and opens Settings.
 
+### Installing the release archive
+
+The ZIP attached to the GitHub Release is a universal build (arm64 + x86_64)
+for **macOS 14 or newer**. It is signed with an Apple Development certificate
+and is not notarized, so Gatekeeper blocks the first launch. To install it:
+
+1. Unzip the archive and move `fmt.app` to `/Applications`.
+2. Allow the first launch in one of two ways:
+   - run `xattr -d com.apple.quarantine /Applications/fmt.app`, then open it
+     normally;
+   - or open it once, then go to **System Settings → Privacy & Security →
+     Open Anyway**.
+3. Enable the extension in **System Settings → General → Login Items &
+   Extensions → Finder Extensions**.
+
+Right-click → Open no longer works for this on recent macOS versions.
+
 ## How it works
 
 - `fmt` is a container SwiftUI app.
