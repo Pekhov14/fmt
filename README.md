@@ -52,7 +52,7 @@ mode. For a colorful icon, remove `.renderingMode(.template)` in `fmt/MyApp.swif
 ./scripts/install.sh
 ```
 
-The script builds the app, copies it to `~/Applications/fmt.app`, registers and
+The script builds the app, copies it to `/Applications/fmt.app`, registers and
 enables the extension with `pluginkit`, and restarts Finder. On first launch
 macOS may ask for confirmation: open **System Settings → General → Login Items &
 Extensions → Finder Extensions** and enable **fmt**.

@@ -5,7 +5,9 @@ cd "$(dirname "$0")/.."
 
 CONFIGURATION="${CONFIGURATION:-Release}"
 BUILD_DIR="${BUILD_DIR:-$PWD/.build}"
-INSTALL_DIR="${INSTALL_DIR:-$HOME/Applications}"
+INSTALL_DIR="${INSTALL_DIR:-/Applications}"
+
+killall fmt 2>/dev/null || true
 
 echo "Сборка fmt.app ($CONFIGURATION)..."
 xcodebuild \
@@ -43,6 +45,10 @@ sort -u | \
 while IFS= read -r registered_path; do
   pluginkit -r "$registered_path" 2>/dev/null || true
 done
+
+# Раньше приложение ставилось в ~/Applications — убираем старую копию,
+# иначе в Finder/Launchpad появляются два одинаковых пункта.
+rm -rf "$HOME/Applications/fmt.app"
 
 mkdir -p "$INSTALL_DIR"
 rm -rf "$INSTALL_DIR/fmt.app"
